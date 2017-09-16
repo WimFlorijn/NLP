@@ -51,14 +51,14 @@ if __name__ == "__main__":
     uunigrams = set(unigrams)
     print('Amount of unigrams: ' + str(len(unigrams)))
     print('Amount of unique unigrams: ' + str(len(uunigrams)))
-    bigrams = list(bigrams(unigrams))
+    """bigrams = list(bigrams(unigrams))
     ubigrams = set(bigrams)
     print('Amount of bigrams: ' + str(len(bigrams)))
     print('Amount of unique bigrams: ' + str(len(ubigrams)))
     trigrams = list(trigrams(unigrams))
     utrigrams = set(trigrams)
     print('Amount of trigrams: ' + str(len(trigrams)))
-    print('Amount of unique trigrams: ' + str(len(utrigrams)))
+    print('Amount of unique trigrams: ' + str(len(utrigrams)))"""
 
     from collections import Counter
     count = Counter(unigrams)
@@ -71,6 +71,13 @@ if __name__ == "__main__":
     occ = Counter(count.values())
     for i in range(1,5):
         print('Amount of words which occur ' + str(i) + ' times: ' + str(occ[i]))
+
+    subset_plus25 = []
+    for item in count.keys():
+        if count[item] > 24:
+            subset_plus25.append(item)
+    unigrams_plus25 = [i for i in unigrams if i in subset_plus25]
+
     print ('\n')
 
     #Question 6
