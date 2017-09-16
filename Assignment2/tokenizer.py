@@ -69,11 +69,11 @@ if __name__ == "__main__":
 
     #Retrieve all ocurance values for each word and make a counter class again
     occ = Counter(count.values())
-    for i in range(1,4):
+    for i in range(1,5):
         print('Amount of words which occur ' + str(i) + ' times: ' + str(occ[i]))
     print ('\n')
 
-
+    #Question 6
 
 
 
