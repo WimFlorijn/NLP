@@ -1,0 +1,167 @@
+@USERMENTION What are you looking for? I am an iPhone developer and might be able to help you
+Hmm... funny. Objective-c does not support 2 methods with the same name and different parameter types
+Hmmm... Just recent started with Twitter, now I am getting spam messages as re-tweets :(
+@USERMENTION blocks?? I agree: make your code more readable and don't use them.
+@USERMENTION Let me know if you 've found it ;)
+Aha! [NSArray arrayWithArray:anotherArray]; creates an AUTORELEASED version of that array! Use [anotherArray copy]; to create a 'normal' one
+I have submitted an iPhone App to the iTunes store. I guess Apple was expecting it? Check www.apple.com
+Go to http://casper.frontier.nl/eham/ and replay sat, 13 nov, 04:44. What happened to flight MPH084?
+The Beatles on iTunes. Is that all?
+Ik zit nu achter een MacBook Pro met een glimmend scherm. Waardeloos! Gelukkig heeft de mijne een dof scherm
+News from Apple: Status of submitted App 'Core Quality' changed from 'Waiting for review' to 'In review'. YES!
+App 'Core Quality' is approved by Apple and ready for sale!!!!
+App 'Core Quality' staat op nummer 1 in de categorie zakelijk!
+@USERMENTION heb je hem gekocht?
+Mijn App (Core Quality) staat nummer 1 in de categorie zakelijk!
+Het houdt niet op: Nummer 1 in categorie 'Betaalde apps'!!
+@USERMENTION Interesting... share the code ;)
+@USERMENTION Ik begrijp oorzaak-gevolg niet helemaal "Staat er niet op want ik wil eerst updaten"?? De App werkt ook op de iPad
+@USERMENTION Nee hoor. Ik heb de App verkocht. Ik word niet rijker van de omzet.
+@USERMENTION search for "
+@USERMENTION http://itunes.apple.com/nl/app/core-quality/id402438821?mt=8
+@USERMENTION http://itunes.apple.com/nl/app/core-quality/id402438821?mt=8
+@USERMENTION en, weet je al waarom?
+@USERMENTION do you release everything in the dealloc method?
+@USERMENTION veel plezier, ik was net te laat :(
+@USERMENTION Tuurlijk ben ik er bij!
+@USERMENTION is Flappie zoek?
+@USERMENTION You're not the only one ;)
+@USERMENTION @USERMENTION @USERMENTION Fietsen? en dan de berg op? Hiermee? http://www.voordeelvouwfietsen.nl/article7245039.jpg
+@USERMENTION CQRS??
+@USERMENTION Goede actie Daniel. Ik mijn spaargeld bij een van banken-van-het-grote-graaien weg te halen, maar waar zet ik het dan wel?
+@USERMENTION Tsja, en toch vind ik dat je meer ondernemer bent als je niet aangesloten bent bij een maatschap. Wat niets zegt over TFG...
+@USERMENTION Nog speciale dingen moeten doen?
+@USERMENTION Office? You don't work at home?
+RT @USERMENTION: "schat, maak jij de auto alvast ijsvrij?" RT @USERMENTION: Ook extreem weer bij de Loosdrechtse plassen: http://yfrog.com/ ...
+Waarom rijdt iedereen toch door rood als er sneeuw ligt?
+RT @USERMENTION: A woman tells her programmer husband: "Get me a quart of milk? And if they have eggs, get a dozen." He comes back wit ...
+@USERMENTION nee, geen ervaring in zippen/unzippen, helaas :(
+Hmm.... I wish there where proper NullPointerExceptions in Objective-c. [object method:parameter]; does nothing if object == nil. Nothing!
+Auto van mijn moeder geleend: Een TomTom weet niet hoe laat het is. Hallo daar!!! Een GPS die de tijd niet weet???
+@USERMENTION Wauw!
+@USERMENTION "koppeling iTunes Store" ???
+#iphonedev while listening to #top2000 is quite effective :)
+@USERMENTION Mooie site! Gebruikt Mirjam ook de Kernkwadranten van Daniel Ofman? http://itunes.apple.com/nl/app/core-quality/id402438821?mt=8 ;)
+Fiets ik door #haarlem, zie ik een strooiwagen rijden. Waar was die toen er sneeuw lag?
+Hmmm... playing around with the Mac App store and suddenly I seem to have purchased iMovie (€ 11,99)! What did I do wrong.
+@USERMENTION Wat? Je moet de deksel optillen om de kerntemperatuur af te kunnen lezen? Dat kan beter ;)
+Idee voor een nieuwe App: http://www.foksuk.nl/content/formfield_files/formcartoon_7519_4d0c26e5d3d3294a46c7fb036cf80753da1a43ae.gif
+@USERMENTION why Parralel XCode installations?
+This weekend I will submit an iPhone version of La Carte (http://www.bol.com/nl/p/nederlandse-boeken/la-carte/1001004005037941/index.html)
+Leon Wubbe - La Carte - http://itun.es/iFG23Y #iTunes
+@USERMENTION en je ging weer Java doen?
+Select a text in windows, Copy this text, Paste in Outlook, Text appears selected (unreadable) in your mail!!!! #microsoftsucks
+@USERMENTION iets voor www.spamklacht.nl ?
+Nieuwe versie van mijn App staat in de AppStore. Onmisbaar als je naar Frankrijk gaat! - La Carte - http://itun.es/iFn5sT #iTunes #frankrijk
+XS4ALL geeft Libiërs internet toegang via inbeldienst. Kijk, da's pas actie.
+@USERMENTION AVAudioFramework does support recording of sound.
+Handig zakwoordenboekje: app ‘La Carte’ http://t.co/f2qWoPa
+Vandaag op mijn nieuwe werkplek. Achter mij rijden de hele dag modeltreinen rond :)
+@USERMENTION Ja, nieuwe werkplek, zelfde bedrijf (MYLAPS, tijdwaarneming). Modeltreinen zijn om auto's op een circuit na te bootsen
+RT @USERMENTION: tjonge, "dictator in het midden oosten" was helaas nooit een carrierepad wat mijn decaan voorstelde.Terwijl iedere dwaas ...
+RT @USERMENTION: Grappig, vertel ik dat er ook een mooie app is voor #kernkwadranten werkt de maker ook hier bij #MyLaps
+@USERMENTION Ja, ik ben van alle markten thuis ;)
+RT @USERMENTION: Wikipedia weet alles: hoe hang je een wc-rol op? http://en.wikipedia.org/wiki/Toilet_paper_orientation
+@USERMENTION yep, na de succesvolle iPhone versie is er ook een Android versie is in de maak van de Core Quality App
+Net de keynote van Steve Jobs gekeken over de iPad 2. Amazing... http://events.apple.com.edgesuite.net/1103pijanbdvaaj/event/index.html
+RT @USERMENTION: http://yfrog.com/h075wskj vervolg op #stationsplein #haarlem
+@USERMENTION http://www.redmondpie.com/apple-to-host-wwdc-2011-from-5th-to-9th-june-report/ Wilde je er heen dan?
+@USERMENTION noor en truffels zijn top! restaurants in #haarlem
+RT @USERMENTION: De sprinter stopt straks pas in Lisse, en dan mag de reiziger pisse. wacht maar een uur, een plee is te duur! Waarom bli ...
+De 'spijkerboor-route' is helemaal geen uitvliegroute: Hoofddorp, Vijfhuizen, Haarlem en Spaarndam zitten gewoon inde herrie #Schiphol #fail
+@USERMENTION ah, je zit in de Morvan. Zitten er nog Fransen tussen de Nederlanders?
+Dus als ING bestuurder bedenk je niet dat een bonus voor opschudding zal zorgen.Wat voor bestuurder ben je dan?? #ING #fail
+@USERMENTION Nee. (tenzij het in de gebruiksvoorwaarden staat). Misschien handig als je dat in de review comments zet.
+@USERMENTION en? Gewonnen natuurlijk!
+Hier wil ik wonen: http://maps.google.nl/maps?hl=nl&sll=53.393048,9.537045
+@USERMENTION wat ga je maken, en voor wie
+RT @USERMENTION: RT @USERMENTION: Confirmation of aliens in Roswell? Really?? http://bit.ly/fpeDjI (via fbi.gov) <-- Must retweet.
+krijg ik opeens mail van 'Qualogy Resources' met (willekeurige) aanvragen voor zzp-ers. Dat noem ik spam! #fail
+@USERMENTION Nee. In de top 10 meest opbrengende Apps! Deze App genereert dus veel advertentie-inkomsten.
+http://t.co/2ofyXoN
+@USERMENTION De lekkerste restaurants: 1) Noor 2) Truffels
+Hmm... adding a custom font to an iPhone App. Anyone succeeded? Not me. (yet) #iphonedev
+Ha! Custom Fonts in iPhone App works! (but not in IB) #iphonedev
+@USERMENTION Custom font file (.ttf) toevoegen aan je project en toevoegen aan info.plist file. Simpel. Alleen in IB zie je de fonts niet.
+Ik lees nu http://sync.nl/waarom-een-rijdende-fiets-niet-omvalt-anders-dan-je-denkt/
+Woensdag weer naar de Wasserkuppe http://t.co/3ne9ocY
+Waarom is er wel gesneden brood maar moet je een broodje zelf doormidden snijden?
+Waarom zie je bij het inchecken met de OV-chipkaart je saldo niet?
+Zit ik Roland Garros te kijken, valt bij de wedstrijd van Sharapova het geluid weg. Wat een geluk kun je hebben!
+Waarom vegen ze bij #RolandGarros niet bij elke pauze even de banen? Dan wijst de umpire nooit meer de verkeerde afdruk aan.
+@USERMENTION krijg je ook nog een transponder op je fiets?
+@USERMENTION 2 klimmen al gehad? Goed hoor! Site is ook al traaaag. Wat wil je met al die belangstelling.
+RT @USERMENTION: Mijn 3e beklimming voor Alpe d'HuZes heb ik gereden in 01:29:01 uur, ik was gestart om 09:28:14 en eindigde om 10:57:15 #ad6
+RT @USERMENTION: Ohhh... don't you just love it when a great comic writer buys a new printer? @USERMENTION http://t.co/JQ8zc6T :D
+RT @USERMENTION: Mijn 4e beklimming voor Alpe d'HuZes heb ik gereden in 01:36:24 uur, ik was gestart om 12:24:06 en eindigde om 14:00:30 #ad6
+@USERMENTION gefeliciteerd jongen. We zijn trots op je. Met tranen in de ogen naar de uitzending van #ad6 gekeken. Al die verhalen...
+RT @USERMENTION: #vacature Medewerker Productie/logistiek full-time bij MYLAPS, sportief bedrijf in #Haarlem http://bit.ly/j7WTmW #job #werk
+RT @USERMENTION: Griekenland telt wereldwijd het hoogste aantal Porsches per 100.000 inwoners.
+Terwijl een collega een sigaret aan het roken was start Windows 7 opnieuw op voor updates: 2 uur werk verloren. Wat een prutsers!
+Leon Wubbe - Core Quality - http://t.co/aSDs4Gl #iTunes has been downloaded more than 1000 times!!! #kernkwadranten
+@USERMENTION http://yfrog.com/kfxhdjj Is het een USB stick of is het meer?
+RT @USERMENTION: Mijn dag is goed: hoor net dat La Carte voor android bijna af is.
+RT @USERMENTION: Moeite met een franse menukaart? De #Android La Carte applicatie is nu beschikbaar op de Android Market! http://t.co/JuZqACl
+Dit bord kan je leven redden:http://t.co/wzaAnJh
+Waarom weten buschauffeurs nooit hoe de verwarming werkt? #heetindebus
+RT @USERMENTION: Wie <a> zegt moet ook </a> zeggen #modernespreekwoorden (tnx @USERMENTION)
+@USERMENTION MS Visual Studio?? Why???
+Even gekeken naar verkeersinformatie op Google Maps (http://t.co/EmMlV2R). Indrukwekkend!
+@USERMENTION welcome to Windows :)
+Allemaal doen: http://t.co/y1r63ta Wie wil er nu nog een PAPIEREN telefoongids???
+@USERMENTION @USERMENTION I have used MotionX for recording walks. Nice App. Mimics your iPhone as a GPS device. You will need a backup battery.
+@USERMENTION @USERMENTION You'll need this: http://t.co/J7cnQ7M
+@USERMENTION Hoe is het uitzicht?
+@USERMENTION Ignore the return code, catch the Exception?
+RT @USERMENTION: Altijd briljant: Phang-Nga Bay in Haarlem, de beste Thai in een zeer wijde omgeving, A'dam inlcuis, misschien wel. Rij ik ...
+Waarom zit peper in een bus, zout in een vaatje en suiker in een pot?
+@USERMENTION Wat ga je doen?
+Waarom kun je bij #hetnieuwepinnen pas je pincode invoeren als het bedrag bekend is?
+Leuk! X-Plane Glider - http://t.co/B1LJJkBu #iTunes
+@USERMENTION Yep, they do.
+Op (simpele) T-splitsing Spanjaardslaan/Zuiderhoutlaan in Haarlem staan 5 verkeersregelaars het verkeer te regelen. En nog staat er een file
+RT @USERMENTION: Officieel: Stichting Haalbaarheidsonderzoek Die Berg Komt Er opgericht. #diebergkomter
+@USERMENTION Nee hoor, een gewoon kruispunt in Haarlem. Het gaat overigens over fiets-stoplichten.
+RT @USERMENTION: Ten years ago, we had Steve Jobs, Bob Hope and Johnny Cash. Now we have no Jobs, no Hope, and no Cash. (source: Facebook/Tw ...
+Als tankstations er gewoon voor zorgen dat je benzine niet kunt stelen (slagboom, kassa bij de pomp), achtervolgen is dan overbodig
+Waarom staat bij de moderne, eigentijdse, biologische, milieuvriendelijke? #Marqt de hele gevel open en loeit de verwarming?
+Waarom worden auto's electrisch en zijn bladerblazers gemotoriseerd? #herrie
+Dus rond Schiphol is het gevaarlijk voor vliegtuigen vanwege ganzen. Waarom vliegen ze dan vaak dwars over Haarlem? Levensgevaarlijk!
+Slimme waxinelichtjes! http://t.co/hVWXjJ9o
+Hoe maak ik een App http://t.co/5K7wfxYf #iphonedev
+RT @USERMENTION: hulde voor @USERMENTION, je weet meteen waar je aan toe bent. zouden meer bedrijven moeten doen! een tevreden klant ui ...
+Goh, dat is nieuw. Een cruiseschip vaart dus op ruwe olie? Da's modern zeg.
+De huizenmarkt zit op slot. De banken vragen de overheid om maatregelen te nemen. En wat doen de banken zelf???
+Vandaag is de nieuwe versie uitgebracht! Leon Wubbe - RC-Timer Pro - http://t.co/PnEO5SOI #iTunes
+Ik heb zojuist het boek Het App Effect van @USERMENTION @USERMENTION @USERMENTION gedownload #vint #sogeti http://t.co/STaSNvoC
+RT @USERMENTION: Zal ik de #ING satelliet weer recht hangen?
+De volgende versie van de RC-Timer App krijgt bediening van via de volumeknoppen. Eindelijk voor elkaar! http://t.co/zvRlO9Te #iTunes
+Tuurlijk! Logisch! HD - Provincie Noord-Holland gaat weer beleggen http://t.co/1B04qqbv
+De gemiddelde vaart is beter geveegd dan de fietspaden in Haarlem.
+@USERMENTION En als je op de fiets naar het werk moet?
+IJsvereniging "Watergang". Daar wordt over een uur geschaatst http://t.co/r7yCNB3h
+@USERMENTION GPS failure?
+Ik lees nu http://t.co/jINCUt5p Dat had ik veel eerder moeten weten ;)
+Haarlem heeft ondergrondse afvalinzameling geïntroduceerd... http://t.co/WGiEprXu
+Schrikkelhuwelijk in trek http://t.co/71wEiAX6 via @USERMENTION Dan kun je maar een keer in de 4 jaar je trouwdag vergeten...
+Een paar jaar geleden geld in een paar lijfrentepolissen gestopt. Dat geld is nu bijna verdwenen... Een oude sok was beter geweest.
+Vanaf 1 juli is in Frankrijk een alcoholtester in je auto verplicht. Ook voor buitenlanders! Ze kosten ca. € 1,-. http://t.co/fVr9mmH5.
+RT @USERMENTION: De Franse premier Fillon vindt ook dat halal en kosjer slachten eigenlijk niet meer van deze tijd is. Moslims en Jo ...
+@USERMENTION "op afstand"?
+@USERMENTION Device? apparaat?
+De laatste dag van de Masters aan het kijken (golf). Prachtig,! de beelden en het commentaar op de BBC
+'Mijn' iPhone App Core Quality nu ook beschikbaar voor Android: https://t.co/LeDFnJQ3
+@USERMENTION @USERMENTION speesen? Nieuw woord?
+Groene stroom in de lift http://t.co/HwPLTWWT via @USERMENTION. Da's gek! Je kunt toch beter met de trap gaan?
+@USERMENTION Your boss pays it?
+Outlook can't even display an animated gif properly #fail
+RT @USERMENTION: Haarlem Klein Heiligland in rep en roer: Oproep aan alle bewoners én gebruikers van deze prachtige wijk: UnilocatieNee h ...
+Dus als je weet dat je 3 wedstrijden in Charkov moet spelen, dan ga je in Krakau zitten, op 1200 km afstand! Handig![http://t.co/rZOiFnCD]
+Senaat verwerpt verbod rituele slacht http://t.co/B4o0ClxN Ongelooflijk. Wat een onzin.
+RT @USERMENTION: Coming soon...The first MYLAPS iPhone app! http://t.co/txXRalUW
+MYLAPS Sports Timing - MYLAPS Event Results - http://t.co/XYiF42a7 #iTunes
+@USERMENTION Hoezo is dat en security lek?
+Wie weet wat dit is? Test-circuit van Michelin? http://t.co/8BEvasfm
+Waarom zit er wel een lichtje in het koelkast-deel, maar niet in het vriezer-deel van een koelkast?
+En, misschien een alarm, als de deur niet (goed) dicht zit dan?
+Marketing anno 2012?? Dacht het niet: http://t.co/gWr3xU4q
