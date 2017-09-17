@@ -1,41 +1,43 @@
-import nltk
+import math
 from nltk.tokenize import RegexpTokenizer
 from nltk import bigrams, trigrams
 
 import os
 
 class Tokenizer:
-    def __init__(self, location):
-        self.location = location
+    def __init__(self):
+        self.tokenizer = RegexpTokenizer(r'\w+')
 
-    @staticmethod
-    def tokenize(text):
-        tokens = RegexpTokenizer(r'\w+').tokenize(text)
-        return tokens
+    def tokenize(self, text, tokenizer=None):
+        if tokenizer is None:
+            result =  self.tokenizer.tokenize(text)
+        else:
+            result = tokenizer.tokenize(text)
+        return result
 
-    @staticmethod
-    def tokenizeFolder(location, gender='All'):
+    def tokenizeFolder(self, location, gender='All'):
         tokens = []
         for file in os.listdir(location):
             filename = os.fsdecode(file)
-            if filename.endswith(".txt") and (gender=='All' or filename.startswith(gender)):
+            if gender=='All' or filename.startswith(gender):
                 with open(location + filename, 'r', encoding='utf-8') as file:
                     content = file.read()
-                    tokens.extend(Tokenizer.tokenize(content))
+                    tokens.extend(self.tokenize(content))
         return tokens
 
 if __name__ == "__main__":
 
     #Question 4
     print ('Question 4')
+    tokenizer = Tokenizer()
 
     text1 = 'I am so blue I am greener than purple.'
     text2 = 'I stepped on a Corn Flake, now I am a Cereal Killer'
     text3 = 'I like the course Natural Language Processing'
 
-    print('Tokenize: ' + text1 + ' -> ' + str(Tokenizer.tokenize(text1)))
-    print('Tokenize: ' + text2 + ' -> ' + str(Tokenizer.tokenize(text2)))
-    print('Tokenize: ' + text3 + ' -> ' + str(Tokenizer.tokenize(text3)))
+    print('Tokenize: ' + text1 + ' -> ' + str(tokenizer.tokenize(text1)))
+    print('Tokenize: ' + text2 + ' -> ' + str(tokenizer.tokenize(text2)))
+    print('Tokenize: ' + text3 + ' -> ' + str(tokenizer.tokenize(text3)))
 
     print ('\n')
 
@@ -43,11 +45,10 @@ if __name__ == "__main__":
     print ('Question 5')
 
     data_dir = 'dataset/blogs/'
-    train =  'train/'
-    test = 'test/'
-    location = data_dir + train
+    train, test =  'train/', 'test/'
+    train_location = data_dir + train
 
-    unigrams = Tokenizer.tokenizeFolder(location)
+    unigrams = tokenizer.tokenizeFolder(train_location)
     uunigrams = set(unigrams)
     print('Amount of unigrams: ' + str(len(unigrams)))
     print('Amount of unique unigrams: ' + str(len(uunigrams)))
@@ -82,44 +83,40 @@ if __name__ == "__main__":
     #Question 6
     print ('Question 6')
 
-    import math
-    unigrams_male = Tokenizer.tokenizeFolder(location, gender='M')
+    unigrams_male = tokenizer.tokenizeFolder(train_location, gender='M')
     unigrams_male_filtered = [i for i in unigrams_male if i in subset_plus25]
-    totalmale = len(unigrams_male_filtered)
+    nm = len(unigrams_male_filtered)
     malecount = Counter(unigrams_male_filtered)
-    print (malecount)
 
-    unigrams_female = Tokenizer.tokenizeFolder(location, gender='F')
+    unigrams_female = tokenizer.tokenizeFolder(train_location, gender='F')
     unigrams_female_filtered = [i for i in unigrams_female if i in subset_plus25]
-    totalfemale = len(unigrams_female_filtered)
+    nf = len(unigrams_female_filtered)
     femalecount = Counter(unigrams_female_filtered)
-    print(femalecount)
 
-    location = data_dir + test
-    k=5
-    v = len(set(unigrams_male) | set(unigrams_female))
+    test_location = data_dir + test
+    k,v = 1,len(set(unigrams_male) | set(unigrams_female))
+    print('K: '+ str(k) + ' V: ' + str(v) + ' Nm: ' + str(nm) + ' Nf: ' + str(nf))
 
-    fileclassification = {}
-    for file in os.listdir(location):
+    id_class = {}
+    for file in os.listdir(test_location):
         filename = os.fsdecode(file)
-        if filename.endswith(".txt"):
-            with open(location + filename, 'r', encoding='utf-8') as file:
-                content = file.read()
-                tokens = Tokenizer.tokenize(content)
-                tmale = float(0)
-                tfemale = float(0)
-                for token in tokens:
-                    tmale += math.log(((malecount[token] + k)/(totalmale + (k*v))), 2)
-                    tfemale += math.log(((femalecount[token] + k)/(totalfemale + (k*v))), 2)
-                if tmale > tfemale:
-                    fileclassification[filename[:-4]] = 'M'
-                else:
-                    fileclassification[filename[:-4]] = 'F'
+        with open(test_location + filename, 'r', encoding='utf-8') as file:
+            tokens = tokenizer.tokenize(file.read())
+            tmale, tfemale = float(0), float(0)
+            for token in tokens:
+                tmale += math.log(((malecount[token] + k)/(nm + (k*v))), 2)
+                tfemale += math.log(((femalecount[token] + k)/(nf + (k*v))), 2)
+            if tmale > tfemale:
+                id_class[filename[:-4]] = 'M'
+            else:
+                id_class[filename[:-4]] = 'F'
 
     with open(data_dir + 'output.txt', 'w') as of:
-        for filename in fileclassification:
-            of.write(filename + '\t' + fileclassification[filename] + '\n')
+        for id in id_class:
+            of.write(id + '\t' + id_class[id] + '\n')
         of.close()
+
+    import evaluate
 
 
 
