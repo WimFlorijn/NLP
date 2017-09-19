@@ -1,6 +1,6 @@
 from tokenizer import Tokenizer
 from collections import Counter
-import math, tokenizer, os, nltk
+import math, os, nltk
 
 
 def question_4(custom_tokenizer):
@@ -18,7 +18,7 @@ def question_4(custom_tokenizer):
     print ('\n')
 
 
-def question_5(custom_tokenizer, train_location):
+def question_5(custom_tokenizer, train_location, min_occ = 25):
     # Question 5
     print ('Question 5')
 
@@ -50,14 +50,14 @@ def question_5(custom_tokenizer, train_location):
 
     subset_plus25 = []
     for item in count.keys():
-        if count[item] > 24:
+        if count[item] >= min_occ:
             subset_plus25.append(item)
 
     print ('\n')
     return subset_plus25
 
 
-def question_6(custom_tokenizer, data_dir, train_location, subset_plus25):
+def question_6(custom_tokenizer, data_dir, train_location, test_location, subset_plus25):
     # Question 6
     print ('Question 6')
 
@@ -71,12 +71,12 @@ def question_6(custom_tokenizer, data_dir, train_location, subset_plus25):
     nf = len(unigrams_female_filtered)
     femalecount = Counter(unigrams_female_filtered)
 
-    test_location = data_dir + test
     k,v = 1,len(set(unigrams_male) | set(unigrams_female))
     print('K: '+ str(k) + ' V: ' + str(v) + ' Nm: ' + str(nm) + ' Nf: ' + str(nf))
 
     id_class = {}
     r_mtokenindex, r_fmtokenindex = set(), set()
+
     for file in os.listdir(test_location):
         filename = os.fsdecode(file)
         with open(test_location + filename, 'r', encoding='utf-8') as file:
@@ -87,8 +87,8 @@ def question_6(custom_tokenizer, data_dir, train_location, subset_plus25):
                 female_score = math.log(((femalecount[token] + k)/(nf + (k*v))), 2)
                 tmale += male_score
                 tfemale += female_score
-                r_mtokenindex.add((token, (tmale/tfemale)))
-                r_fmtokenindex.add((token, (tfemale/tmale)))
+                r_mtokenindex.add((token, (male_score/female_score)))
+                r_fmtokenindex.add((token, (female_score/male_score)))
             if tmale > tfemale:
                 id_class[filename[:-4]] = 'M'
             else:
@@ -98,31 +98,42 @@ def question_6(custom_tokenizer, data_dir, train_location, subset_plus25):
         for id in id_class:
             of.write(id + '\t' + id_class[id] + '\n')
         of.close()
-
+    print('\n')
     return r_mtokenindex, r_fmtokenindex
 
 
-def question_61(r_mtokenindex, r_fmtokenindex):
+def question_61(r_mtokenindex, r_fmtokenindex, amount=10):
     # Question 6.1
+    print('\n')
     print ('Question 6.1')
+    male = sorted(list(r_mtokenindex), key=lambda x: x[1], reverse=True)
+    female = sorted(list(r_fmtokenindex), key=lambda x: x[1], reverse=True)
+    if len(male) < amount or len(female) < amount:
+        amount = min(len(male), len(female))
 
-    print(sorted(list(r_mtokenindex), key=lambda x: x[1])[-10:])
-    print(sorted(list(r_fmtokenindex), key=lambda x: x[1])[-10:])
+    top_male = male[:amount]
+    top_female = female[:amount]
+
+    print('Top ' + str(amount) + ' male words:')
+    print(top_male)
+    print('Top ' + str(amount) + ' female words:')
+    print(top_female)
+    print('\n')
 
 if __name__ == "__main__":
     regex_tokenizer = Tokenizer()
 
     data_dir = 'dataset/blogs/'
     train, test = 'train/', 'test/'
-    train_location = data_dir + train
+    train_location, test_location = data_dir + train, data_dir + test
 
     question_4(regex_tokenizer)
 
-    subset_plus25 = question_5(regex_tokenizer, train_location)
+    subset_plus25 = question_5(regex_tokenizer, train_location, min_occ=50)
 
-    r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, subset_plus25)
+    r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
 
     import evaluate
 
-    question_61(r_mtokenindex, r_fmtokenindex)
+    question_61(r_mtokenindex, r_fmtokenindex, amount=10)
 
