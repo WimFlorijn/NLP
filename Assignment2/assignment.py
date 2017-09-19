@@ -125,12 +125,15 @@ def question_7(tokenizer, data_dir, train_dir, test_dir, subset_plus25):
     # Question 7
     print('Question 7')
 
-    bigrams_m, n_m, count_m = _get_bigrams_filtered(
+    bigrams_m, n_2_m, count_2_m = _get_bigrams_filtered(
         tokenizer, train_dir, subset_plus25, 'M')
-    bigrams_f, n_f, count_f = _get_bigrams_filtered(
+    unigrams_m, n_1_m, count_1_m = _get_unigrams_filtered(
+        tokenizer, train_dir, subset_plus25, 'M')
+    bigrams_f, n_2_f, count_2_f = _get_bigrams_filtered(
+        tokenizer, train_dir, subset_plus25, 'F')
+    unigrams_f, n_1_f, count_1_f = _get_unigrams_filtered(
         tokenizer, train_dir, subset_plus25, 'F')
     v = len(set(bigrams_m) | set(bigrams_f))
-    print(f'K: {K} V: {v} Nm: {n_m} Nf: {n_f}')
 
     id_class = {}
     r_mtokenindex, r_fmtokenindex = set(), set()
@@ -138,21 +141,22 @@ def question_7(tokenizer, data_dir, train_dir, test_dir, subset_plus25):
     for filename_b in os.listdir(test_dir):
         filename = os.fsdecode(filename_b)
         with open(
-                os.path.join(test_dir, filename), 'r', encoding='utf-8'
-        ) as file:
+                os.path.join(test_dir, filename), 'r',
+                encoding='utf-8') as file:
             bigrams = _get_bigrams_filtered(
                 tokenizer, file.read(), subset_plus25, multiple=False)[0]
             bigram = bigrams[0]
-            score_m = log((count_m[bigram]+K)/(n_m+K*v), 2)
-            score_f = log((count_f[bigram]+K)/(n_f+K*v), 2)
+            score_m = log((count_1_m[bigram[0]]+K)/(n_1_m+K*v), 2)
+            score_f = log((count_1_f[bigram[0]]+K)/(n_1_f+K*v), 2)
             t_m = score_m
             t_f = score_f
             rev_score_m, rev_score_f = pow(2, score_m), pow(2, score_f)
             r_mtokenindex.add((bigram, rev_score_m/rev_score_f))
             r_fmtokenindex.add((bigram, rev_score_f/rev_score_m))
-            for i, bigram in enumerate(bigrams[1:]):
-                score_m = log((count_m[bigram]+K)/(count_m[bigrams[i-1]]+K), 2)
-                score_f = log((count_f[bigram]+K)/(count_f[bigrams[i-1]]+K), 2)
+            for bigram in bigrams:
+                wi_1, wi = bigram
+                score_m = log((count_2_m[bigram]+K)/(n_2_m+K*v)/(count_1_m[wi_1]+K)*(n_1_m+K*v), 2)
+                score_f = log((count_2_f[bigram]+K)/(n_2_f+K*v)/(count_1_f[wi_1]+K)*(n_1_f+K*v), 2)
                 t_m += score_m
                 t_f += score_f
                 rev_score_m, rev_score_f = pow(2, score_m), pow(2, score_f)
@@ -208,9 +212,9 @@ if __name__ == "__main__":
     # 25 by default, set to 50+ for testing question 6.1
     subset_plus25 = question_5(regex_tokenizer, train_location, min_occ=25)
 
-    r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
-    question_61(r_mtokenindex, r_fmtokenindex, amount=10)
+    #r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
+    #question_61(r_mtokenindex, r_fmtokenindex, amount=10)
 
     r_mtokenindex, r_fmtokenindex = question_7(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
-    question_61(r_mtokenindex, r_fmtokenindex, amount=10)
+    #question_61(r_mtokenindex, r_fmtokenindex, amount=10)
 
