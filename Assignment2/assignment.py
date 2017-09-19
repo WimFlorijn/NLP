@@ -87,8 +87,9 @@ def question_6(custom_tokenizer, data_dir, train_location, test_location, subset
                 female_score = math.log(((femalecount[token] + k)/(nf + (k*v))), 2)
                 tmale += male_score
                 tfemale += female_score
-                r_mtokenindex.add((token, (male_score/female_score)))
-                r_fmtokenindex.add((token, (female_score/male_score)))
+                rev_male_score, rev_female_score = math.pow(2, male_score), math.pow(2, female_score)
+                r_mtokenindex.add((token, (rev_male_score/rev_female_score)))
+                r_fmtokenindex.add((token, (rev_female_score/rev_male_score)))
             if tmale > tfemale:
                 id_class[filename[:-4]] = 'M'
             else:
