@@ -10,8 +10,11 @@ def read_predictions(filename):
 
 
 # Read in arguments
-ground_truth_file = 'dataset/blogs/groundtruth.txt'#sys.argv[1]
-results_file = 'dataset/blogs/output.txt'#sys.argv[2]
+ground_truth_file = 'dataset/blogs/groundtruth.txt'
+results_file = 'dataset/blogs/output.txt'
+if len(sys.argv) > 1:
+    ground_truth_file = sys.argv[1]
+    results_file = sys.argv[2]
 
 print ("Results file " + results_file)
 print ("Groundtruth file " + ground_truth_file)

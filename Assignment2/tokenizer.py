@@ -12,7 +12,7 @@ class Tokenizer:
             result = self.tokenizer.tokenize(text)
         else:
             result = custom_tokenizer.tokenize(text)
-        return result
+        return [r.lower() for r in result]
 
     def tokenize_folder(self, location, gender='All'):
         token_text = []
