@@ -1,0 +1,4 @@
+load grammar 2b
+load lexicon 2b
+file parse sentences.txt out.txt
+

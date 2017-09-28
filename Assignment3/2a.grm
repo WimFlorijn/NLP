@@ -1,0 +1,24 @@
+Rule {sentence1}
+S -> NP VP
+
+Rule {NP}
+NP -> NNP NNS
+
+Rule {NP}
+NP -> JJ NNS
+
+Rule {NP}
+NP -> NNP VP NN
+
+Rule {VP}
+VP -> VBZ
+
+Rule {VP}
+VP -> VBP PP
+
+Rule {VP}
+VP -> PP
+
+Rule {PP}
+PP -> IN NP
+
