@@ -1,0 +1,22 @@
+;;;;;;;;;;;;;;;;
+;; Grammar 2b ;;
+;;;;;;;;;;;;;;;;
+
+; Sentence
+; Note: in this case, we assume that the input will always be sentences, which
+;       should contain at least one verb phrase. However, if the input can be
+;       any phrase, the verb phrase can be made optional, so long as there is a
+;       noun phrase.
+Rule S -> (NP) VP
+
+; Noun Phrase
+Rule NP -> {(JJ) (DT) {PRP/NN/NNS/{NN NNS}}}/{(JJ) NP {PP/{CC NP}}}
+
+; Verb Phrase
+Rule VP -> {VBP/VBZ} ({PP/{NP (PP)}/ADJP})
+
+; Prepositional Phrase
+Rule PP -> IN NP
+
+; Adjective Phrase
+Rule ADJP -> JJ
