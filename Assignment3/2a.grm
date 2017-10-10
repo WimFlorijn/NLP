@@ -1,24 +1,15 @@
-Rule {sentence1}
-S -> NP VP
+;;;;;;;;;;;;;;;;
+;; Grammar 2a ;;
+;;;;;;;;;;;;;;;;
 
-Rule {NP}
-NP -> NNP NNS
+; Sentence
+Rule S -> NP VP
 
-Rule {NP}
-NP -> JJ NNS
+; Noun Phrase
+Rule NP -> (JJ) {NN/NNS/{NN NNS}}
 
-Rule {NP}
-NP -> NNP VP NN
+; Verb Phrase
+Rule VP -> {VBP/VBZ} (PP/NP/{NP PP})
 
-Rule {VP}
-VP -> VBZ
-
-Rule {VP}
-VP -> VBP PP
-
-Rule {VP}
-VP -> PP
-
-Rule {PP}
-PP -> IN NP
-
+; Prepositional Phrase
+Rule PP -> IN NP

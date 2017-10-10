@@ -1,0 +1,387 @@
+research fans hope for spinal injuries
+
+1:
+           S_1 
+    ________|_________
+  NP_2             VP_4 
+    |       _________|__________
+  NN_3+   VBZ_5  NP_6        PP_8+ 
+research  fans     |      _____|______
+                 NN_7   IN_9+     NP_10+ 
+                 hope    for     ____|____
+                              JJ_11+  NNS_12+ 
+                              spinal injuries 
+
+S:
+[ cat:   S ]
+
+
+2:
+         S_13 
+    _______|_______
+  NP_2          VP_14 
+    |       ______|_______
+  NN_3+   VBZ_5        NP_15 
+research  fans     ______|______
+                 NP_6        PP_8+ 
+                   |      _____|______
+                 NN_7   IN_9+     NP_10+ 
+                 hope    for     ____|____
+                              JJ_11+  NNS_12+ 
+                              spinal injuries 
+
+S:
+[ cat:   S ]
+
+
+3:
+              S_16 
+        ________|_________
+      NP_17            VP_19 
+    ____|____      ______|______
+  NN_3+  NNS_18 VBP_20       PP_8+ 
+research  fans   hope     _____|______
+                        IN_9+     NP_10+ 
+                         for     ____|____
+                              JJ_11+  NNS_12+ 
+                              spinal injuries 
+
+S:
+[ cat:   S ]
+
+3 parses found
+
+time flies like an arrow
+
+1:
+           S_1 
+            |
+          VP_2 
+   _________|__________
+ VBP_3  NP_4        PP_6 
+ time     |      _____|_____
+        NNS_5  IN_7      NP_8+ 
+        flies  like     ___|____
+                      DT_9+ NN_10+ 
+                       an    arrow 
+
+S:
+[ cat:   S ]
+
+
+2:
+       S_11 
+         |
+       VP_12 
+   ______|_______
+ VBP_3        NP_13 
+ time     ______|______
+        NP_4        PP_6 
+          |      _____|_____
+        NNS_5  IN_7      NP_8+ 
+        flies  like     ___|____
+                      DT_9+ NN_10+ 
+                       an    arrow 
+
+S:
+[ cat:   S ]
+
+
+3:
+       S_14 
+   ______|_______
+ NP_15        VP_17 
+   |      ______|______
+ NN_16 VBZ_18       PP_6 
+ time   flies    _____|_____
+               IN_7      NP_8+ 
+               like     ___|____
+                      DT_9+ NN_10+ 
+                       an    arrow 
+
+S:
+[ cat:   S ]
+
+
+4:
+            S_19 
+      ________|________
+    NP_20           VP_21 
+   ___|____      _____|_____
+ NN_16  NNS_5 VBP_22     NP_8+ 
+ time   flies  like     ___|____
+                      DT_9+ NN_10+ 
+                       an    arrow 
+
+S:
+[ cat:   S ]
+
+4 parses found
+
+spinal injuries are dangerous
+
+1:
+               S 
+       ________|________
+      NP              VP 
+   ____|____       ____|_____
+  JJ      NNS     VBP     ADJP 
+spinal injuries   are       |
+                           JJ 
+                        dangerous 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+dangerous fans like research
+
+1:
+                S 
+         _______|________
+        NP             VP 
+     ____|____      ____|____
+    JJ      NNS    VBP     NP 
+ dangerous fans   like      |
+                           NN 
+                        research 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+spinal injuries require research
+
+1:
+               S 
+       ________|_________
+      NP               VP 
+   ____|____        ____|____
+  JJ      NNS      VBP     NP 
+spinal injuries  require    |
+                           NN 
+                        research 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+research costs money
+
+1:
+         S 
+    _____|______
+   NP         VP 
+    |       ___|____
+   NN      VBZ    NP 
+research  costs    |
+                  NN 
+                 money 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+research costs money and time
+
+1:
+           S 
+    _______|________
+   NP             VP 
+    |       _______|_______
+   NN      VBZ           NP 
+research  costs    _______|_______
+                  NP     CC     NP 
+                   |     and     |
+                  NN            NN 
+                 money         time 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+research costs much money and time
+
+1:
+           S_1 
+    ________|________
+  NP_2+           VP_4 
+    |       ________|_________
+  NN_3+  VBZ_5+            NP_6 
+research  costs    __________|___________
+                 JJ_7+  NP_8  CC_10+ NP_11+ 
+                 much     |     and     |
+                        NN_9+        NN_12+ 
+                        money         time 
+
+S:
+[ cat:   S ]
+
+
+2:
+          S_13 
+    ________|_________
+  NP_2+            VP_14 
+    |       _________|__________
+  NN_3+  VBZ_5+              NP_15 
+research  costs       _________|_________
+                    NP_16     CC_10+ NP_11+ 
+                   ___|____     and     |
+                 JJ_7+  NN_9+        NN_12+ 
+                 much   money         time 
+
+S:
+[ cat:   S ]
+
+2 parses found
+
+dangerous injuries require research
+
+1:
+                  S 
+         _________|_________
+        NP                VP 
+     ____|_____        ____|____
+    JJ       NNS      VBP     NP 
+ dangerous injuries require    |
+                              NN 
+                           research 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+the researcher fans himself
+
+1:
+                S 
+       _________|_________
+      NP                VP 
+   ____|_____        ____|____
+  DT       NN       VBZ     NP 
+  the  researcher  fans      |
+                            PRP 
+                          himself 
+
+S:
+[ cat:   S ]
+
+1 parse found
+
+fans like money and research
+
+1:
+         S_1 
+          |
+        VP_2 
+   _______|_______
+ VBZ_3         PP_4 
+ fans     _______|_______
+        IN_5          NP_6+ 
+        like     _______|________
+               NP_7+  CC_9+  NP_10+ 
+                 |     and      |
+               NN_8+         NN_11+ 
+               money        research 
+
+S:
+[ cat:   S ]
+
+
+2:
+        S_12 
+   _______|_______
+ NP_13         VP_15 
+   |      _______|_______
+NNS_14 VBP_16         NP_6+ 
+ fans   like     _______|________
+               NP_7+  CC_9+  NP_10+ 
+                 |     and      |
+               NN_8+         NN_11+ 
+               money        research 
+
+S:
+[ cat:   S ]
+
+2 parses found
+
+research fans like likes
+
+1:
+            S_1 
+             |
+           VP_2 
+    _________|_________
+  VBP_3   NP_4      PP_6 
+research    |      ___|____
+          NNS_5  IN_7   NP_8+ 
+          fans   like     |
+                       NNS_9+ 
+                        likes 
+
+S:
+[ cat:   S ]
+
+
+2:
+        S_10 
+          |
+        VP_11 
+    ______|_______
+  VBP_3        NP_12 
+research    _____|_____
+          NP_4      PP_6 
+            |      ___|____
+          NNS_5  IN_7   NP_8+ 
+          fans   like     |
+                       NNS_9+ 
+                        likes 
+
+S:
+[ cat:   S ]
+
+
+3:
+        S_13 
+    ______|_______
+  NP_14        VP_16 
+    |       _____|_____
+  NN_15  VBZ_17     PP_6 
+research  fans     ___|____
+                 IN_7   NP_8+ 
+                 like     |
+                       NNS_9+ 
+                        likes 
+
+S:
+[ cat:   S ]
+
+
+4:
+             S_18 
+        _______|_______
+      NP_19         VP_20 
+    ____|____      ___|____
+  NN_15   NNS_5 VBP_21  NP_8+ 
+research  fans   like     |
+                       NNS_9+ 
+                        likes 
+
+S:
+[ cat:   S ]
+
+4 parses found
+
+
+File parsing statistics: 12 sentences read
+           7 sentences with 1 parse
+           2 sentences with 2 parses
+           1 sentence  with 3 parses
+           2 sentences with 4 parses
+12 of 12 (100.0 %) parsed at least once
