@@ -1,10 +1,10 @@
 from tokenizer import Tokenizer
 from collections import Counter
-import math, os, nltk
+import os, nltk
 from math import log, pow
 
 # Smoothing parameter `k`
-K = 1
+K = 5
 
 
 def question_4(custom_tokenizer):
@@ -210,11 +210,13 @@ if __name__ == "__main__":
     question_4(regex_tokenizer)
 
     # 25 by default, set to 50+ for testing question 6.1
-    subset_plus25 = question_5(regex_tokenizer, train_location, min_occ=25)
+    subset_plus25 = question_5(regex_tokenizer, train_location, min_occ=50)
 
-    #r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
-    #question_61(r_mtokenindex, r_fmtokenindex, amount=10)
+    r_mtokenindex, r_fmtokenindex = question_6(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
 
-    r_mtokenindex, r_fmtokenindex = question_7(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
+    #import evaluate
+    question_61(r_mtokenindex, r_fmtokenindex, amount=10)
+
+    #r_mtokenindex, r_fmtokenindex = question_7(regex_tokenizer, data_dir, train_location, test_location, subset_plus25)
     #question_61(r_mtokenindex, r_fmtokenindex, amount=10)
 
