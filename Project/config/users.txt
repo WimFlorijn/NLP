@@ -1,0 +1,24 @@
+# Democrats
+BarackObama
+JoeBiden
+SenSanders
+NancyPelosi
+clairecmc
+SenGillibrand
+keithellison
+SenBooker
+SenWarren
+SenSchumer
+
+# Republicans
+realDonaldTrump
+SenJohnMcCain
+SpeakerBoehner
+GOPLeader
+RandPaul
+marcorubio
+SenJohnKennedy
+SenatorFischer
+
+# Libertarian
+RonPaul
