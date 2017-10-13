@@ -1,24 +1,29 @@
 # Democrats
-BarackObama
-JoeBiden
-SenSanders
-NancyPelosi
-clairecmc
-SenGillibrand
-keithellison
-SenBooker
-SenWarren
-SenSchumer
+D:BarackObama
+D:JoeBiden
+D:SenSanders
+D:NancyPelosi
+D:clairecmc
+D:SenGillibrand
+D:keithellison
+D:SenBooker
+D:SenWarren
+D:SenSchumer
+D:CongressmanRuiz
+D:repjohnlewis
 
 # Republicans
-realDonaldTrump
-SenJohnMcCain
-SpeakerBoehner
-GOPLeader
-RandPaul
-marcorubio
-SenJohnKennedy
-SenatorFischer
+R:realDonaldTrump
+R:SenJohnMcCain
+R:SpeakerBoehner
+R:GOPLeader
+R:RandPaul
+R:marcorubio
+R:SenJohnKennedy
+R:SenatorFischer
+R:gop
+R:RepGallagher
+R:VP
 
 # Libertarian
-RonPaul
+L:RonPaul

@@ -16,9 +16,9 @@ def build_data_set():
         for line in users.readlines():
             if line.lstrip().startswith('#') or len(line.strip()) == 0:
                 continue
-            user = line.strip()
-            print(f'Downloading tweets from {user}...')
-            tweets = data_set.add_tweets(user)
-            print(f'Downloaded {len(tweets)} tweets from {user}.')
+            party, user = line.strip().split(':', 1)
+            print(f'Downloading tweets from {user} ({party})...')
+            tweets = data_set.add_tweets(user, party)
+            print(f'Downloaded {len(tweets)} tweets from {user} ({party}).')
 
     return data_set

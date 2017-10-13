@@ -28,16 +28,18 @@ class TwitterDataSet:
         self.oauth = credsfromfile(CREDS_FILE, config_dir)
         self.config_dir = config_dir
         self.data_dir = data_dir
+        self.users = {}
         self.tweets = {}
 
         # Load the previously downloaded tweets
         self.load()
 
-    def add_tweets(self, user):
+    def add_tweets(self, user, party):
         """
         Downloads tweets from a single Twitter user up to the specified ID.
 
         :param user: the Twitter handle of the user.
+        :param party: the political party to which `user` belongs.
         :return the list of downloaded tweets.
         """
 
@@ -49,6 +51,7 @@ class TwitterDataSet:
             include_rts='true')
         self.tweets[user] = tweets
         self.save()
+        self.users[user] = party
         return tweets
 
     def save(self):
@@ -77,6 +80,15 @@ class TwitterDataSet:
         for file_name in glob.glob(os.path.join(self.data_dir, '*.json')):
             with open(file_name) as f:
                 self.tweets[os.path.basename(file_name[:-5])] = json.load(f)
+
+        # Load the users' political parties
+        with open(os.path.join(self.config_dir, 'users.txt')) as users:
+            for line in users.readlines():
+                if line.lstrip().startswith('#') or len(
+                        line.strip()) == 0:
+                    continue
+                party, user = line.strip().split(':', 1)
+                self.users[user] = party
 
     def get_preprocessed_tweets(self):
 
@@ -116,8 +128,9 @@ class TwitterDataSet:
 
                 preprocessed_tweets[author][tweet['id']] = {
                     'date': tweet['created_at'],
-                    'text': text,
-                    'hashtags': tuple(h['text'] for h in tweet['entities']['hashtags'])
+                    'hashtags': tuple(h['text'] for h in tweet['entities']['hashtags']),
+                    'party': self.users[author],
+                    'text': text
                 }
 
         return preprocessed_tweets
