@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+import re
 import shutil
 
 from nltk.twitter import credsfromfile, Query
@@ -123,12 +124,15 @@ class TwitterDataSet:
                     continue
 
                 # Preprocess the tweet's text
-                text = tweet['text']
-                # TODO
+                text = tweet['text'].lower()
+                text = re.sub(r'#[\w\d]+', 'HASH_TAG', text)
+                for url in reversed(tweet['entities']['urls']):
+                    text = text[:url['indices'][0]] + 'URL' + text[url['indices'][1]:]
 
                 preprocessed_tweets[author][tweet['id']] = {
                     'date': tweet['created_at'],
                     'hashtags': tuple(h['text'] for h in tweet['entities']['hashtags']),
+                    'urls': tuple(u['expanded_url'] for u in tweet['entities']['urls']),
                     'party': self.users[author],
                     'text': text
                 }
