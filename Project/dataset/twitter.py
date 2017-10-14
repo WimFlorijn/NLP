@@ -125,9 +125,9 @@ class TwitterDataSet:
 
                 # Preprocess the tweet's text
                 text = tweet['text'].lower()
-                text = re.sub(r'#[\w\d]+', 'HASH_TAG', text)
                 for url in reversed(tweet['entities']['urls']):
                     text = text[:url['indices'][0]] + 'URL' + text[url['indices'][1]:]
+                text = re.sub(r'#[\w\d]+', 'HASH_TAG', text)
 
                 preprocessed_tweets[author][tweet['id']] = {
                     'date': tweet['created_at'],
