@@ -5,14 +5,15 @@ import shutil
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.util import ngrams
 
-from .dataset import TwitterDataSet
-from .tokenizer import Tokenizer
+from dataset import TwitterDataSet
+from tokenizer import Tokenizer
 
 default_sid = SentimentIntensityAnalyzer()
 
 DEFAULT_CONFIG_DIR = "config"
 DEFAULT_DATA_DIR = "data"
 DEFAULT_OUTPUT_DATA_DIR = "processed_data"
+DEFAULT_EXCEPTION_LIST = ['HASH_TAG', 'URL']
 
 
 class Analyzer:
@@ -33,6 +34,7 @@ class Analyzer:
         self.config_dir = config_dir
         self.data_dir = data_dir
         self.output_dir = output_dir
+        self.exception_list = DEFAULT_EXCEPTION_LIST
         self.tweets = {}
         self.pruned_tweets = {}
         self.inverse_index = {}
@@ -87,13 +89,11 @@ class Analyzer:
             for tweet in self.pruned_tweets[person]:
                 tokens = self.tokenizer.tokenize(tweet)
                 if sentiment_analysis_feature:
-                    self.pruned_tweets[person][tweet]['sentiment_analysis_weight'] = self.calculate_sentiment(tokens)
+                    ss = self.calculate_sentiment(tokens)
+                    for k in sorted(ss):
+                        self.pruned_tweets[person][tweet][k] = ss[k]
 
                 if n_gram_feature:
-                    score = 0
-                    for token in tokens:
-                        score += 1/self.inverse_index[token]
-                    self.pruned_tweets[person][tweet]['1_gram'] = score
                     for i in range(1,5):
                         score = 0
                         if i > 1:
@@ -104,9 +104,18 @@ class Analyzer:
                         else:
                             n_gram_tokens = tokens
                         for token in n_gram_tokens:
-                            amount = (1 / self.inverse_index[token])
-                            score += amount
+                            score += 1 / self.inverse_index[token]
                         self.pruned_tweets[person][tweet][str(i)+'_gram'] = score
+
+                if count_feature:
+                    self.pruned_tweets[person][tweet]['charc'] = self.calculate_character_count(tweet)
+                    self.pruned_tweets[person][tweet]['wordc'] = self.calculate_word_count(tokens)
+
+                if punctuation_feature:
+                    self.pruned_tweets[person][tweet]['excc'] = self.calculate_symbol_count(tweet, '!')
+                    self.pruned_tweets[person][tweet]['quesc'] = self.calculate_symbol_count(tweet, '?')
+                    self.pruned_tweets[person][tweet]['quotec'] = self.calculate_symbol_count(tweet, '"')
+                    self.pruned_tweets[person][tweet]['captc'] = self.calculate_number_capitalized_words(tweet)
 
     @staticmethod
     def calculate_word_grams(tokens, n=1):
@@ -132,10 +141,19 @@ class Analyzer:
     def calculate_symbol_count(tweet, symbol):
         return tweet.count(symbol)
 
-    @staticmethod
-    def calculate_number_capitalized_words(tweet):
-        ctr = 0
+    def calculate_number_capitalized_words(self, tweet):
+        counter = 0
         for word in tweet.split():
             if word.isupper():
-                ctr += 1
-        return ctr
+                contains = False
+                for item in self.exception_list:
+                    if item in word:
+                        contains = True
+                if not contains:
+                    counter += 1
+        return counter
+
+
+a = Analyzer()
+a.calc_features()
+a.save()
