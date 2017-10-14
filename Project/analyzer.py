@@ -1,17 +1,27 @@
-from tokenizer import Tokenizer
+import os
+import json
+import shutil
+
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.util import ngrams
-import os, glob, json, shutil
+
+from .dataset import TwitterDataSet
+from .tokenizer import Tokenizer
 
 default_sid = SentimentIntensityAnalyzer()
 
+DEFAULT_CONFIG_DIR = "config"
 DEFAULT_DATA_DIR = "data"
 DEFAULT_OUTPUT_DATA_DIR = "processed_data"
 
 
 class Analyzer:
+
+    tokenizer = Tokenizer()
+
     def __init__(
             self,
+            config_dir=DEFAULT_CONFIG_DIR,
             data_dir=DEFAULT_DATA_DIR,
             output_dir=DEFAULT_OUTPUT_DATA_DIR):
         """
@@ -20,6 +30,7 @@ class Analyzer:
         :param data_dir: the directory to which tweets are saved.
         """
 
+        self.config_dir = config_dir
         self.data_dir = data_dir
         self.output_dir = output_dir
         self.tweets = {}
@@ -32,15 +43,8 @@ class Analyzer:
 
     def load(self):
 
-        # Do not attempt to load tweets if the data directory does not exist
-        if not os.path.exists(self.data_dir):
-            return
-
-        # Load the tweets into memory
-        self.tweets = {}
-        for file_name in glob.glob(os.path.join(self.data_dir, '*.json')):
-            with open(file_name) as f:
-                self.tweets[os.path.basename(file_name[:-5])] = json.load(f)
+        data_set = TwitterDataSet(self.config_dir, self.data_dir)
+        self.tweets = data_set.get_preprocessed_tweets()
 
     def save(self):
         """
@@ -67,9 +71,9 @@ class Analyzer:
     def prune(self):
         for person in self.tweets:
             self.pruned_tweets[person] = {}
-            for item in self.tweets[person]:
+            for tweet_id, item in self.tweets[person].items():
                 tweet = item['text']
-                self.add_to_inverse_index(regex_tokenizer.tokenize(tweet))
+                self.add_to_inverse_index(self.tokenizer.tokenize(tweet))
                 self.pruned_tweets[person][tweet] = {}
 
     def calc_features(
@@ -81,9 +85,9 @@ class Analyzer:
 
         for person in self.pruned_tweets:
             for tweet in self.pruned_tweets[person]:
-                tokens = regex_tokenizer.tokenize(tweet)
+                tokens = self.tokenizer.tokenize(tweet)
                 if sentiment_analysis_feature:
-                    self.pruned_tweets[person][tweet]['sentiment_analysis_weight'] = Analyzer.calculate_sentiment(tokens)
+                    self.pruned_tweets[person][tweet]['sentiment_analysis_weight'] = self.calculate_sentiment(tokens)
 
                 if n_gram_feature:
                     score = 0
@@ -93,7 +97,7 @@ class Analyzer:
                     for i in range(1,5):
                         score = 0
                         if i > 1:
-                            n_grams = Analyzer.calculate_word_grams(tokens, n=i)
+                            n_grams = self.calculate_word_grams(tokens, n=i)
                             n_gram_tokens = list()
                             for value in n_grams:
                                 n_gram_tokens.extend(value.split())
@@ -103,7 +107,6 @@ class Analyzer:
                             amount = (1 / self.inverse_index[token])
                             score += amount
                         self.pruned_tweets[person][tweet][str(i)+'_gram'] = score
-
 
     @staticmethod
     def calculate_word_grams(tokens, n=1):
@@ -136,25 +139,3 @@ class Analyzer:
             if word.isupper():
                 ctr += 1
         return ctr
-
-
-regex_tokenizer = Tokenizer()
-analyzer = Analyzer()
-
-analyzer.calc_features()
-analyzer.save()
-
-test_tweet = "VADER is very smart, handsome, and funny."
-tweet_tokens = regex_tokenizer.tokenize(test_tweet)
-
-print(Analyzer.calculate_sentiment(tweet_tokens))
-
-print(Analyzer.calculate_word_grams(tweet_tokens, n=3))
-
-print(Analyzer.calculate_character_count(test_tweet))
-
-print(Analyzer.calculate_word_count(tweet_tokens))
-
-print(Analyzer.calculate_symbol_count(test_tweet, '.'))
-
-print(Analyzer.calculate_number_capitalized_words(test_tweet))
