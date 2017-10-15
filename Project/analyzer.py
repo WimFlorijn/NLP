@@ -13,7 +13,7 @@ default_sid = SentimentIntensityAnalyzer()
 DEFAULT_CONFIG_DIR = "config"
 DEFAULT_DATA_DIR = "data"
 DEFAULT_OUTPUT_DATA_DIR = "processed_data"
-DEFAULT_EXCEPTION_LIST = ['HASH_TAG', 'URL']
+DEFAULT_EXCEPTION_LIST = ['HASH_TAG', 'URL', 'I']
 
 
 class Analyzer:
@@ -115,7 +115,7 @@ class Analyzer:
                     self.pruned_tweets[person][tweet]['excc'] = self.calculate_symbol_count(tweet, '!')
                     self.pruned_tweets[person][tweet]['quesc'] = self.calculate_symbol_count(tweet, '?')
                     self.pruned_tweets[person][tweet]['quotec'] = self.calculate_symbol_count(tweet, '"')
-                    self.pruned_tweets[person][tweet]['captc'] = self.calculate_number_capitalized_words(tweet)
+                    self.pruned_tweets[person][tweet]['captc'] = self.calculate_number_uppercase_words(tweet)
 
     @staticmethod
     def calculate_word_grams(tokens, n=1):
@@ -141,7 +141,7 @@ class Analyzer:
     def calculate_symbol_count(tweet, symbol):
         return tweet.count(symbol)
 
-    def calculate_number_capitalized_words(self, tweet):
+    def calculate_number_uppercase_words(self, tweet):
         counter = 0
         for word in tweet.split():
             if word.isupper():

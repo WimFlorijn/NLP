@@ -124,7 +124,7 @@ class TwitterDataSet:
                     continue
 
                 # Preprocess the tweet's text
-                text = tweet['text'].lower()
+                text = tweet['text']
                 for url in reversed(tweet['entities']['urls']):
                     text = text[:url['indices'][0]] + 'URL' + text[url['indices'][1]:]
                 text = re.sub(r'#[\w\d]+', 'HASH_TAG', text)

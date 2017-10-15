@@ -11,14 +11,14 @@ if __name__ == '__main__':
     test_tweet = "VADER is very smart, handsome, and funny."
     tweet_tokens = regex_tokenizer.tokenize(test_tweet)
 
-    print(Analyzer.calculate_sentiment(tweet_tokens))
+    print(f"Sentiment: {Analyzer.calculate_sentiment(tweet_tokens)}")
 
-    print(Analyzer.calculate_word_grams(tweet_tokens, n=3))
+    print(f"N-grams (3): {Analyzer.calculate_word_grams(tweet_tokens, n=3)}")
 
-    print(Analyzer.calculate_character_count(test_tweet))
+    print(f"Character count: {Analyzer.calculate_character_count(test_tweet)}")
 
-    print(Analyzer.calculate_word_count(tweet_tokens))
+    print(f"Word count: {Analyzer.calculate_word_count(tweet_tokens)}")
 
-    print(Analyzer.calculate_symbol_count(test_tweet, '.'))
+    print(f"Punctuation (.): {Analyzer.calculate_symbol_count(test_tweet, '.')}")
 
-    print(analyzer.calculate_number_capitalized_words(test_tweet))
+    print(f"Uppercase words: {analyzer.calculate_number_uppercase_words(test_tweet)}")
