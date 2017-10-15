@@ -21,4 +21,4 @@ if __name__ == '__main__':
 
     print(Analyzer.calculate_symbol_count(test_tweet, '.'))
 
-    print(Analyzer.calculate_number_capitalized_words(test_tweet))
+    print(analyzer.calculate_number_capitalized_words(test_tweet))
