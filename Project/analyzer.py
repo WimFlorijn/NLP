@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 
+from collections import Counter
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.util import ngrams
 
@@ -36,13 +37,11 @@ class Analyzer:
         self.output_dir = output_dir
         self.exception_list = DEFAULT_EXCEPTION_LIST
         self.tweets = {}
-        self.pruned_tweets = {}
         self.processed_tweets = {}
         self.inverse_index = {}
 
         # Load the previously downloaded tweets
         self.load()
-        self.prune()
 
     def load(self):
         """
@@ -73,8 +72,8 @@ class Analyzer:
                 party, user = line.strip().split(':', 1)
                 if party not in elements.keys():
                     elements[party] = {}
-                if user in self.pruned_tweets.keys():
-                    elements[party][user] = self.pruned_tweets[user]
+                if user in self.tweets.keys():
+                    elements[party][user] = self.tweets[user]
 
             self.processed_tweets = elements
 
@@ -89,14 +88,6 @@ class Analyzer:
             else:
                 self.inverse_index[token] = 1
 
-    def prune(self):
-        for person in self.tweets:
-            self.pruned_tweets[person] = {}
-            for tweet_id, item in self.tweets[person].items():
-                tweet = item['text']
-                #self.add_to_inverse_index(self.tokenizer.tokenize(tweet))
-                self.pruned_tweets[person][tweet] = {}
-
     def calc_features(
             self,
             sentiment_analysis_feature=True,
@@ -104,13 +95,14 @@ class Analyzer:
             count_feature=True,
             punctuation_feature=True):
 
-        for person in self.pruned_tweets:
-            for tweet in self.pruned_tweets[person]:
-                tokens = self.tokenizer.tokenize(tweet)
+        for person in self.tweets:
+            for tweet in self.tweets[person]:
+                tweet_text = self.tweets[person][tweet]['text']
+                tokens = self.tokenizer.tokenize(tweet_text)
                 if sentiment_analysis_feature:
                     ss = self.calculate_sentiment(tokens)
                     for k in sorted(ss):
-                        self.pruned_tweets[person][tweet][k] = ss[k]
+                        self.tweets[person][tweet][k] = ss[k]
 
                 if n_gram_feature:
                     for i in range(1, 5):
@@ -125,30 +117,69 @@ class Analyzer:
                             n_gram_tokens = tokens
                         #for token in n_gram_tokens:
                         #    score += 1 / self.inverse_index[token]
-                        self.pruned_tweets[person][tweet][str(i)+'_gram'] = n_gram_tokens
+                        self.tweets[person][tweet][str(i)+'_gram'] = n_gram_tokens
 
                 if count_feature:
-                    self.pruned_tweets[person][tweet]['charc'] = self.calculate_character_count(tweet)
-                    self.pruned_tweets[person][tweet]['wordc'] = self.calculate_word_count(tokens)
+                    self.tweets[person][tweet]['charc'] = self.calculate_character_count(tweet_text)
+                    self.tweets[person][tweet]['wordc'] = self.calculate_word_count(tokens)
 
                 if punctuation_feature:
-                    self.pruned_tweets[person][tweet]['excc'] = self.calculate_symbol_occ(tweet, '!')
-                    self.pruned_tweets[person][tweet]['quesc'] = self.calculate_symbol_occ(tweet, '?')
-                    self.pruned_tweets[person][tweet]['quotec'] = self.calculate_symbol_occ(tweet, '"')
-                    self.pruned_tweets[person][tweet]['urlc'] = self.calculate_word_occ(tokens, 'url')
-                    self.pruned_tweets[person][tweet]['captc'] = self.calculate_number_uppercase_words(tweet)
+                    self.tweets[person][tweet]['excc'] = self.calculate_symbol_occ(tweet_text, '!')
+                    self.tweets[person][tweet]['quesc'] = self.calculate_symbol_occ(tweet_text, '?')
+                    self.tweets[person][tweet]['quotec'] = self.calculate_symbol_occ(tweet_text, '"')
+                    self.tweets[person][tweet]['urlc'] = self.calculate_word_occ(tokens, 'url')
+                    self.tweets[person][tweet]['captc'] = self.calculate_number_uppercase_words(tweet_text)
 
     def get_results(self):
+        dates = {}
+        dates['R'], dates['D'], dates['L'] = [], [], []
         for party in self.processed_tweets.keys():
+            party_ctr = 0
             amount_results = 0
-            compound = 0
+            compound, pos, neu, neg = 0, 0, 0, 0
+            charc, wordc = 0, 0
+            excc, quesc, quotec, urlc, captc = 0, 0, 0, 0, 0
+            word_grams = {}
+            word_grams['1_gram'], word_grams['2_gram'], word_grams['3_gram'], word_grams['4_gram'] = [], [], [], []
             for item in self.processed_tweets[party]:
-                amount_results += 1
                 for element in self.processed_tweets[party][item]:
+                    party_ctr += 1
+                    amount_results += 1
                     compound += self.processed_tweets[party][item][element]['compound']
+                    pos += self.processed_tweets[party][item][element]['pos']
+                    neg += self.processed_tweets[party][item][element]['neg']
+                    neu += self.processed_tweets[party][item][element]['neu']
+                    charc += self.processed_tweets[party][item][element]['charc']
+                    wordc += self.processed_tweets[party][item][element]['wordc']
+                    excc += self.processed_tweets[party][item][element]['excc']
+                    quesc += self.processed_tweets[party][item][element]['quesc']
+                    quotec += self.processed_tweets[party][item][element]['quotec']
+                    urlc += self.processed_tweets[party][item][element]['urlc']
+                    captc += self.processed_tweets[party][item][element]['captc']
+                    word_grams['1_gram'].extend(self.processed_tweets[party][item][element]['1_gram'])
+                    word_grams['2_gram'].extend(self.processed_tweets[party][item][element]['2_gram'])
+                    word_grams['3_gram'].extend(self.processed_tweets[party][item][element]['3_gram'])
+                    word_grams['4_gram'].extend(self.processed_tweets[party][item][element]['4_gram'])
+                    dates[party].append(self.processed_tweets[party][item][element]['date'])
+            print('Class: ' + party + ' contains ' + str(party_ctr) + ' tweets')
             print('Average compound: ' + party + ' ' + str(compound/amount_results))
-
-            #todo rest
+            print('Average pos: ' + party + ' ' + str(pos / amount_results))
+            print('Average neg: ' + party + ' ' + str(neg / amount_results))
+            print('Average neu: ' + party + ' ' + str(neu / amount_results))
+            print('Average charc: ' + party + ' ' + str(charc / amount_results))
+            print('Average wordc: ' + party + ' ' + str(wordc / amount_results))
+            print('Average excc: ' + party + ' ' + str(excc / amount_results))
+            print('Average quesc: ' + party + ' ' + str(quesc / amount_results))
+            print('Average quotec: ' + party + ' ' + str(quotec / amount_results))
+            print('Average urlc: ' + party + ' ' + str(urlc / amount_results))
+            print('Average captc: ' + party + ' ' + str(captc / amount_results))
+            counts1, counts2, counts3, counts4 = Counter(word_grams['1_gram']), Counter(word_grams['2_gram']), \
+                                                 Counter(word_grams['3_gram']), Counter(word_grams['4_gram'])
+            print(counts1)
+            print(counts2)
+            print(counts3)
+            print(counts4)
+        print(dates)
 
     @staticmethod
     def calculate_word_grams(tokens, n=1):
