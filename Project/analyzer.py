@@ -7,12 +7,12 @@ from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.util import ngrams
 
-from dataset import TwitterDataSet
-from tokenizer import Tokenizer
+from .dataset import TwitterDataSet
+from .tokenizer import Tokenizer
 
 default_sid = SentimentIntensityAnalyzer()
 
-DEFAULT_CONFIG_DIR = "config"
+DEFAULT_CONFIG_DIR = "Project/config"
 DEFAULT_INPUT_DATA_DIR = "data"
 DEFAULT_OUTPUT_DATA_DIR = "processed_data"
 DEFAULT_RESULT_DIR = "results"
@@ -267,7 +267,7 @@ class Analyzer:
         return counter
 
 
-a = Analyzer()
-a.calc_features()
-a.save()
-a.get_results()
+#a = Analyzer()
+#a.calc_features()
+#a.save()
+#a.get_results()
