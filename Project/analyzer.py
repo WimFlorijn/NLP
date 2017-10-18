@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+import time
 
 from collections import Counter
 from nltk.corpus import stopwords
@@ -12,7 +13,7 @@ from .tokenizer import Tokenizer
 
 default_sid = SentimentIntensityAnalyzer()
 
-DEFAULT_CONFIG_DIR = "Project/config"
+DEFAULT_CONFIG_DIR = "config"
 DEFAULT_INPUT_DATA_DIR = "data"
 DEFAULT_OUTPUT_DATA_DIR = "processed_data"
 DEFAULT_RESULT_DIR = "results"
@@ -178,7 +179,8 @@ class Analyzer:
 
             for item in self.processed_tweets[party]:
                 for element in self.processed_tweets[party][item]:
-                    results[party]['creation_dates'].append(self.processed_tweets[party][item][element]['date'])
+                    results[party]['creation_dates'].append(time.strftime('%Y-%m-%d', time.strptime(
+                        self.processed_tweets[party][item][element]['date'], '%a %b %d %H:%M:%S +0000 %Y')))
                     results[party]['hashtags'].extend(self.processed_tweets[party][item][element]['hashtags'])
 
                     if sentiment_analysis_feature:
