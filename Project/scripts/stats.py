@@ -1,9 +1,13 @@
+import json
+
 from Project.dataset import TwitterDataSet
 
 if __name__ == '__main__':
     # Load the downloaded data set
     data_set = TwitterDataSet()
     processed_data_set = data_set.get_preprocessed_tweets()
+    with open('preprocessed_data_set.json', 'w') as f:
+        json.dump(processed_data_set, f, indent=4)
 
     # TODO Analyze these tweets
     democrats = republicans = libertarians = 0

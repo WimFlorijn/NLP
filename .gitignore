@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 
 Project/config/credentials.txt
+
+preprocessed_data_set.json
