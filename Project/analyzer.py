@@ -217,6 +217,7 @@ class Analyzer:
                         results[party]['avg_captc'] += \
                             self.processed_tweets[party][item][element]['captc'] / results[party]['tweet_count']
 
+            results[party]['creation_dates'] = Counter(results[party]['creation_dates'])
             results[party]['hashtags'] = Counter(results[party]['hashtags']).most_common(TOP_N_VALUES)
 
             if n_gram_feature:
@@ -267,9 +268,3 @@ class Analyzer:
                 if not contains:
                     counter += 1
         return counter
-
-
-#a = Analyzer()
-#a.calc_features()
-#a.save()
-#a.get_results()
